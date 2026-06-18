@@ -39,15 +39,15 @@ Here’s how the calculator looks:
 
 
 🛠️ Technologies Used:
-HTML5 for structure
-CSS3 for styling and responsiveness
-JavaScript for functionality
+- HTML5 for structure
+- CSS3 for styling and responsiveness
+- JavaScript for functionality
 
 📖 How It Works
-Input handling: Buttons and keyboard events trigger handleKey()
-Expression building: Operators and digits update state.expression
-Evaluation: safeEvaluate() parses and computes without using eval
-Display updates: Managed by setDisplay() for consistent UI feedback
+- Input handling: Buttons and keyboard events trigger handleKey()
+- Expression building: Operators and digits update state.expression
+- Evaluation: safeEvaluate() parses and computes without using eval
+- Display updates: Managed by setDisplay() for consistent UI feedback
 
 
 
