@@ -24,6 +24,47 @@
     displayEl.value = state.current;
   }
 
+  // Real-time results preview
+  function previewResult() {
+    if (state.justEvaluated) return;
+
+    // Only preview when expression is structurally complete enough.
+    if (!state.expression) {
+      // If user is only typing a number, keep current value.
+      setDisplay();
+      return;
+    }
+
+    // If expression ends with an operator, we can still preview using the current number.
+    // (state.lastWasOperator means user just pressed operator; safeEvaluate will still work)
+    if (state.current === '' || state.current === '.' || state.current === 'Error') return;
+
+    // Avoid preview while the user just pressed an operator.
+    // The calculator display should show the typed expression (e.g., "5+").
+    if (state.lastWasOperator) return;
+
+    // Only allow preview when expression/current form a complete number.
+    // Also don't preview right after '=' (Enter key) action.
+    if (state.justEvaluated) return;
+
+    // Don't preview after operator entry; preview starts after digits/dot/backspace/percent.
+
+
+    const expr = (state.expression || '') + state.current;
+
+
+    try {
+      const value = safeEvaluate(expr);
+      displayEl.value = formatResult(value);
+
+
+    } catch {
+      // If preview fails (incomplete expression), revert to normal display.
+      setDisplay();
+    }
+  }
+
+
 
   function normalizeNumberString(s) {
     if (s === '' || s === '.') return '0';
@@ -34,6 +75,8 @@
   }
 
   function appendDigit(d) {
+    state.justEvaluated = false;
+
     // d can be '0'-'9' or '00'
     if (state.justEvaluated) {
       state.expression = '';
@@ -51,7 +94,9 @@
     state.current = normalizeNumberString(state.current);
     state.lastWasOperator = false;
     setDisplay();
+    previewResult();
   }
+
 
   function appendDot() {
     if (state.justEvaluated) {
@@ -69,6 +114,7 @@
   }
 
   function appendOperator(op) {
+
     if (state.justEvaluated) state.justEvaluated = false;
 
     const cur = state.current;
@@ -87,7 +133,9 @@
     // Show the operator immediately (user expects it to be visible).
     // Example: typing 5 then pressing '+' should show "5+".
     displayEl.value = state.expression;
+    previewResult();
   }
+
 
 
   function backspace() {
@@ -102,7 +150,9 @@
       }
       state.current = normalizeNumberString(state.current);
       setDisplay();
+      previewResult();
       return;
+
     }
 
     if (state.expression) {
@@ -110,7 +160,9 @@
       state.current = '0';
       state.lastWasOperator = /[+\-*/]$/.test(state.expression);
       setDisplay();
+      previewResult();
     }
+
   }
 
   function clearAll() {
@@ -119,7 +171,9 @@
     state.lastWasOperator = false;
     state.justEvaluated = false;
     setDisplay();
+    previewResult();
   }
+
 
   function applyPercent() {
     const n = Number(state.current);
@@ -137,9 +191,11 @@
     state.lastWasOperator = false;
     state.justEvaluated = false;
     setDisplay();
+    previewResult();
   }
 
   function safeEvaluate(expr) {
+
     // Tiny evaluator for numbers and + - * /
     // Tokenization
     const tokens = [];
@@ -247,7 +303,9 @@
       state.current = formatResult(value);
       state.lastWasOperator = false;
       state.justEvaluated = true;
+      // Avoid preview changing the final value after '='.
       setDisplay();
+
     } catch {
       state.expression = '';
       state.current = 'Error';
