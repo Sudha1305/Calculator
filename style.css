@@ -6,8 +6,10 @@ body {
     text-align: center;
     color: rgb(25, 35, 44);;
 }
+
 .container {
-    margin: 15% auto;
+    margin: 8% auto;
+
     width: fit-content;
     display: flex;
     align-items: center;
