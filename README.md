@@ -1,62 +1,53 @@
-# 🧮 JavaScript Calculator
+# 🧮 Modern JavaScript Calculator
 
-A modern, responsive calculator built with **HTML, CSS, and JavaScript**.  
-It features a custom safe evaluator, keyboard support, and a sleek aquamarine-on-dark UI.
-
+A beautiful, feature-rich calculator built entirely with pure HTML, CSS, and JavaScript! No frameworks, no dependencies - just clean, modern code!
 
 ## ✨ Features
-- **Basic arithmetic**: Addition, subtraction, multiplication, division
-- **Percent function**: Quickly convert numbers into percentages
-- **Backspace & Clear**: Correct mistakes or reset easily
-- **Keyboard support**: Digits, operators, Enter, Backspace, Escape, `%`
-- **Safe evaluation**: Custom parser avoids `eval()` for security
-- **Responsive design**: Works across devices with media queries
-- **Stylish UI**: Dark background with aquamarine accents and hover effects
+
+- 🎨 **Dual Themes** - Beautiful dark mode & light mode with smooth transitions
+- 📜 **Calculation History** - Automatically saves your calculations & lets you reuse them
+- 📋 **Copy to Clipboard** - One-click copy of results
+- ⌨️ **Full Keyboard Support** - Use your keyboard for fast calculations
+- 📱 **Responsive Design** - Looks amazing on all devices
+- 🌟 **Modern UI** - Gradient backgrounds, glowing effects, smooth animations
+- 🔒 **Safe Evaluation** - No `eval()` used for security
+- 💾 **Local Storage** - Remembers your history & theme preference
+- ➕ **All Basic Operations** - Addition, subtraction, multiplication, division, percentage
+
+## 🎯 Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `0-9` | Numbers |
+| `+`, `-`, `*`, `/` | Operators |
+| `.` | Decimal |
+| `%` | Percentage |
+| `ENTER` or `=` | Calculate |
+| `BACKSPACE` | Delete |
+| `ESC` | Clear all |
 
 
-  
-Project Structure
-├── index.html   # Main HTML file
-├── style.css    # Styling for calculator
-└── script.js    # Calculator logic
+## 🛠️ Technologies Used
 
+- **HTML5** - Structure
+- **CSS3** - Styling (gradients, animations, responsive design)
+- **Vanilla JavaScript** - Functionality (no frameworks!)
 
+## 📁 Project Structure
 
-## 🚀 Getting Started
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/js-calculator.git
-   
-2.Navigate into the project folder:
-bash
-cd js-calculator
+```
+calculator/
+├── index.html      # Main HTML file
+├── style.css       # Styles with theme support
+└── script.js       # Calculator functionality
+```
 
-3.Open index.html in your browser.
+## 📸 Preview
 
+### Dark Mode
+A stunning deep-space theme with purple-blue gradients & animated glowing border!
 
+### Light Mode
+A fresh, clean theme with soft aqua-pink gradients!
 
-UI Preview:
-Here’s how the calculator looks
-
-<img width="1877" height="836" alt="image" src="https://github.com/user-attachments/assets/3d13f20d-baab-4685-8fbb-c1eec0e42c3d" />
-
-
-🛠️ Technologies Used:
-- HTML5 for structure
-- CSS3 for styling and responsiveness
-- JavaScript for functionality
-
-
-📖 How It Works
-- Input handling: Buttons and keyboard events trigger handleKey()
-- Expression building: Operators and digits update state.expression
-- Evaluation: safeEvaluate() parses and computes without using eval
-- Display updates: Managed by setDisplay() for consistent UI feedback
-
-
-
-
-
-
-
-
+Built with Pure JavaScript!
